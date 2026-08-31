@@ -907,8 +907,8 @@
         kind: kind,
         level: opts.level,
         problem: state.problem,
-        code: opts.code || (state.settings.sendCode ? state.record.draftCode : ''),
-        error: opts.error,
+        code: L.codeForRequest(state.settings, opts.code, state.record.draftCode),
+        error: L.privateTextForRequest(state.settings, opts.error),
         history: state.thread.slice(0, -1),
         hintLevel: state.record.hintLevel || 0,
         userText: userText

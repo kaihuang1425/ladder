@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ladder store tile</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; }
+  body {
+    display: grid;
+    place-items: center;
+    background: linear-gradient(145deg, #1f2a63 0%, #3b5bdb 58%, #6d7ff2 100%);
+    color: white;
+    font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  .wrap {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; gap: 30px;
+    padding: 38px 40px;
+  }
+  .mark {
+    width: 104px; height: 104px; border-radius: 26px;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.22);
+    display: grid; place-items: center;
+    box-shadow: 0 18px 50px rgba(15,23,42,.24);
+    flex: 0 0 auto;
+  }
+  .ladder { width: 48px; height: 70px; position: relative; }
+  .ladder::before, .ladder::after {
+    content: ""; position: absolute; top: 0; bottom: 0; width: 7px;
+    background: white; border-radius: 5px;
+  }
+  .ladder::before { left: 3px; }
+  .ladder::after { right: 3px; }
+  .rung { position: absolute; left: 8px; right: 8px; height: 6px; background: white; border-radius: 4px; }
+  .r1 { top: 14px; } .r2 { top: 32px; } .r3 { top: 50px; }
+  .copy { min-width: 0; }
+  h1 { margin: 0 0 9px; font-size: 44px; line-height: 1; letter-spacing: -1.8px; font-weight: 780; }
+  p { margin: 0; max-width: 230px; font-size: 18px; line-height: 1.35; color: rgba(255,255,255,.88); }
+</style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="mark" aria-hidden="true">
+      <div class="ladder"><i class="rung r1"></i><i class="rung r2"></i><i class="rung r3"></i></div>
+    </div>
+    <div class="copy">
+      <h1>Ladder</h1>
+      <p>Progressive coding hints, not instant spoilers.</p>
+    </div>
+  </main>
+</body>
+</html>

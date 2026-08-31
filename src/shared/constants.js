@@ -146,6 +146,15 @@
     return Math.max(lo, Math.min(hi, n));
   }
 
+  function privateTextForRequest(settings, text) {
+    if (!settings || settings.sendCode === false) return '';
+    return text || '';
+  }
+
+  function codeForRequest(settings, explicitCode, draftCode) {
+    return privateTextForRequest(settings, explicitCode || draftCode);
+  }
+
   function relTime(ts) {
     const T = NS.t || function (k) { return k; };
     if (!ts) return T('time.never');
@@ -174,6 +183,8 @@
     nextReview,
     problemId,
     clamp,
+    privateTextForRequest,
+    codeForRequest,
     relTime
   });
 })(typeof globalThis !== 'undefined' ? globalThis : self);

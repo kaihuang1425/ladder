@@ -359,6 +359,19 @@ check('prompts: code and error are passed as separate labelled blocks', function
   has(joined, 'IndexError');
 });
 
+check('prompts: private text is omitted when code sharing is disabled', function () {
+  const msgs = L.buildMessages({
+    kind: 'debug', settings: { language: 'Python', sendCode: false },
+    problem: { title: 't', statement: 'a problem statement long enough to matter' },
+    code: 'PRIVATE_SENTINEL_CODE', error: 'PRIVATE_SENTINEL_ERROR'
+  });
+  const joined = msgs.map(function (m) { return m.content; }).join('\n');
+  lacks(joined, 'LEARNER CODE');
+  lacks(joined, 'ERROR / FAILING TEST');
+  lacks(joined, 'PRIVATE_SENTINEL_CODE');
+  lacks(joined, 'PRIVATE_SENTINEL_ERROR');
+});
+
 check('prompts: history is capped so long sessions stay in budget', function () {
   const history = [];
   for (let i = 0; i < 40; i++) {
@@ -399,6 +412,14 @@ check('storage: spaced repetition intervals grow', function () {
   const d4 = Math.round((L.nextReview(4) - now) / 864e5);
   eq(d0, 1); eq(d1, 3); eq(d4, 35);
   eq(Math.round((L.nextReview(99) - now) / 864e5), 35, 'clamps at the last step');
+});
+
+check('privacy: disabling code sending overrides every code source', function () {
+  eq(L.codeForRequest({ sendCode: false }, 'explicit code', 'saved draft'), '');
+  eq(L.codeForRequest({ sendCode: true }, 'explicit code', 'saved draft'), 'explicit code');
+  eq(L.codeForRequest({ sendCode: true }, '', 'saved draft'), 'saved draft');
+  eq(L.privateTextForRequest({ sendCode: false }, 'stack trace'), '');
+  eq(L.privateTextForRequest({ sendCode: true }, 'stack trace'), 'stack trace');
 });
 
 

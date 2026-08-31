@@ -303,14 +303,16 @@
     messages.push({ role: 'system', content: instruction });
     messages.push({ role: 'system', content: problemContext(problem) });
 
-    if (opts.code && String(opts.code).trim()) {
+    // Enforce the stored privacy preference at prompt assembly too, so every
+    // request path drops private editor and diagnostic text when it is off.
+    if (settings.sendCode !== false && opts.code && String(opts.code).trim()) {
       messages.push({
         role: 'system',
         content: '--- LEARNER CODE (' + (settings.language || 'unknown') + ') ---\n' +
           truncate(opts.code, 8000) + '\n--- END CODE ---'
       });
     }
-    if (opts.error && String(opts.error).trim()) {
+    if (settings.sendCode !== false && opts.error && String(opts.error).trim()) {
       messages.push({
         role: 'system',
         content: '--- ERROR / FAILING TEST THEY REPORTED ---\n' +

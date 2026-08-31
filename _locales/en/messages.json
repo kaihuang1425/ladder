@@ -1,6 +1,6 @@
 {
   "extName":        { "message": "Ladder — coding practice coach" },
-  "extDescription": { "message": "A side-by-side coach for LeetCode, Codeforces, AtCoder and more. Progressive hints instead of spoilers. Bring your own key — Gemini's free tier works." },
+  "extDescription": { "message": "Side-by-side coding practice coach for LeetCode, Codeforces, AtCoder and more. Progressive hints instead of instant answers." },
   "cmdToggle":      { "message": "Show or hide the Ladder panel" },
   "cmdHint":        { "message": "Ask for the next hint" }
 }

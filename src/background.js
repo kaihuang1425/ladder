@@ -135,8 +135,9 @@ async function runStream(port, msg) {
 
   // The panel sends intent (kind, level, problem, code). Prompts are assembled
   // here so the content script never carries the prompt library or the key.
-  const messages = msg.messages ||
-    L.buildMessages(Object.assign({}, msg.opts, { settings: settings }));
+  // Always assemble prompts here with the stored settings. Accepting caller-
+  // supplied messages would let a request bypass privacy controls.
+  const messages = L.buildMessages(Object.assign({}, msg.opts, { settings: settings }));
 
   let built;
   try {
