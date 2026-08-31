@@ -1,0 +1,6 @@
+{
+  "extName":        { "message": "Ladder — 刷題教練" },
+  "extDescription": { "message": "在 LeetCode、Codeforces、AtCoder 等網站旁邊的解題教練。分階提示，不直接爆雷。用自己的金鑰，Gemini 免費額度就夠用。" },
+  "cmdToggle":      { "message": "顯示或隱藏 Ladder 面板" },
+  "cmdHint":        { "message": "要下一個提示" }
+}

@@ -1,0 +1,6 @@
+{
+  "extName":        { "message": "Ladder — 刷题教练" },
+  "extDescription": { "message": "在 LeetCode、Codeforces、AtCoder 等网站旁边的解题教练。分级提示，不直接剧透。使用自己的密钥，Gemini 免费额度即可。" },
+  "cmdToggle":      { "message": "显示或隐藏 Ladder 面板" },
+  "cmdHint":        { "message": "获取下一条提示" }
+}

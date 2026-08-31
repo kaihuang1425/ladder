@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>1. Two Sum - LeetCode</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    color: #262626; background: #fff; line-height: 1.6;
+  }
+  .nav {
+    height: 50px; border-bottom: 1px solid #eaeaea;
+    display: flex; align-items: center; padding: 0 20px; gap: 18px;
+    font-size: 14px; font-weight: 600; position: sticky; top: 0; background: #fff;
+  }
+  .nav .logo { font-weight: 800; }
+  .nav .sp { flex: 1; }
+  .cols { display: flex; gap: 14px; padding: 14px; align-items: flex-start; }
+  .col { border: 1px solid #eaeaea; border-radius: 8px; background: #fff; }
+  .left { flex: 1; min-width: 0; padding: 22px 26px; }
+  .right { flex: 1; min-width: 0; }
+  h1 { font-size: 22px; font-weight: 600; margin-bottom: 8px; }
+  .diff { display: inline-block; font-size: 12px; font-weight: 600;
+    color: #00b8a3; background: #e7f9f6; padding: 3px 10px; border-radius: 999px;
+    margin-bottom: 18px; }
+  .desc p { margin-bottom: 14px; }
+  .desc pre {
+    background: #f7f8fa; border-radius: 8px; padding: 12px 14px;
+    font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px;
+    white-space: pre-wrap; margin-bottom: 14px;
+  }
+  .desc ul { margin: 0 0 14px 22px; }
+  .desc code {
+    background: #f2f3f5; padding: 1px 5px; border-radius: 4px;
+    font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px;
+  }
+  .desc strong { font-weight: 600; }
+  .editor-head {
+    border-bottom: 1px solid #eaeaea; padding: 9px 14px;
+    font-size: 13px; font-weight: 600; display: flex; gap: 10px;
+  }
+  .monaco-editor { padding: 14px; font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 13px; line-height: 1.7; min-height: 380px; color: #333; }
+  .view-line { white-space: pre; }
+  .bar { padding: 10px 14px; border-top: 1px solid #eaeaea; display: flex; gap: 8px; }
+  .bar button { font: inherit; font-size: 13px; padding: 6px 14px; border-radius: 6px;
+    border: 1px solid #ddd; background: #f7f8fa; cursor: pointer; }
+  .testbar { position: fixed; left: 14px; bottom: 14px; z-index: 99;
+    background: #14181d; color: #fff; border-radius: 10px; padding: 8px 10px;
+    display: flex; gap: 6px; font-size: 12px; align-items: center; }
+  html[data-shot] .testbar { display: none; }
+  .testbar button { font: inherit; font-size: 12px; background: #2b3240; color: #fff;
+    border: 0; border-radius: 6px; padding: 5px 10px; cursor: pointer; }
+  .testbar span { opacity: .6; margin-right: 4px; }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <span class="logo">LeetCode</span>
+  <span>Problems</span><span>Contest</span><span>Discuss</span>
+  <span class="sp"></span>
+  <span>Premium</span>
+</div>
+
+<div class="cols">
+  <div class="col left">
+    <div data-cy="question-title"><h1>1. Two Sum</h1></div>
+    <div class="diff">Easy</div>
+
+    <div data-track-load="description_content" class="desc">
+      <p>Given an array of integers <code>nums</code> and an integer
+        <code>target</code>, return <em>indices of the two numbers such that they
+        add up to <code>target</code></em>.</p>
+
+      <p>You may assume that each input would have <strong>exactly one
+        solution</strong>, and you may not use the <em>same</em> element twice.</p>
+
+      <p>You can return the answer in any order.</p>
+
+      <p><strong>Example 1:</strong></p>
+      <pre>Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].</pre>
+
+      <p><strong>Example 2:</strong></p>
+      <pre>Input: nums = [3,2,4], target = 6
+Output: [1,2]</pre>
+
+      <p><strong>Example 3:</strong></p>
+      <pre>Input: nums = [3,3], target = 6
+Output: [0,1]</pre>
+
+      <p><strong>Constraints:</strong></p>
+      <ul>
+        <li><code>2 &lt;= nums.length &lt;= 10^4</code></li>
+        <li><code>-10^9 &lt;= nums[i] &lt;= 10^9</code></li>
+        <li><code>-10^9 &lt;= target &lt;= 10^9</code></li>
+        <li><strong>Only one valid answer exists.</strong></li>
+      </ul>
+
+      <p><strong>Follow-up:</strong> Can you come up with an algorithm that is
+        less than <code>O(n^2)</code> time complexity?</p>
+    </div>
+  </div>
+
+  <div class="col right">
+    <div class="editor-head"><span>Python3</span><span>Auto</span></div>
+    <div class="monaco-editor">
+      <div class="view-line">class Solution:</div>
+      <div class="view-line">    def twoSum(self, nums: List[int], target: int) -&gt; List[int]:</div>
+      <div class="view-line">        for i in range(len(nums)):</div>
+      <div class="view-line">            for j in range(len(nums)):</div>
+      <div class="view-line">                if nums[i] + nums[j] == target:</div>
+      <div class="view-line">                    return [i, j]</div>
+      <div class="view-line">        return []</div>
+    </div>
+    <div class="bar"><button>Run</button><button>Submit</button></div>
+  </div>
+</div>
+
+<div class="testbar">
+  <span>fixture</span>
+  <button onclick="__ladderTest.toggle()">Toggle panel</button>
+  <button onclick="console.table(__ladderTest.adapters())">Test adapters</button>
+  <button onclick="__ladderTest.reset()">Reset state</button>
+  <button onclick="__ladderTest.lang('zh-TW')">zh-TW</button>
+  <button onclick="__ladderTest.lang('zh-CN')">zh-CN</button>
+  <button onclick="__ladderTest.lang('es')">ES</button>
+  <button onclick="__ladderTest.lang('en')">EN</button>
+</div>
+
+<script src="/src/shared/constants.js"></script>
+<script src="/src/shared/markdown.js"></script>
+<script src="/src/shared/i18n.js"></script>
+<script src="/src/shared/locales/en.js"></script>
+<script src="/src/shared/locales/zh-TW.js"></script>
+<script src="/src/shared/locales/zh-CN.js"></script>
+<script src="/src/shared/locales/es.js"></script>
+<script src="/src/shared/glossary.js"></script>
+<script src="shim.js"></script>
+<script src="/src/content/adapters.js"></script>
+<script src="/src/content/panel.js"></script>
+<script src="scenarios.js"></script>
+<script>
+  // The panel boots asynchronously; open it once it has registered.
+  if (!location.search.includes('shot='))
+    setTimeout(function () { __ladderTest.open(); }, 300);
+</script>
+</body>
+</html>

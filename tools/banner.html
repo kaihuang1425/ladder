@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ladder banner</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1280px; height: 400px; overflow: hidden; }
+
+  body {
+    --bg-a: #f7f8fb;
+    --bg-b: #eef1f8;
+    --ink: #14181d;
+    --ink-2: #56606c;
+    --ink-3: #97a1ad;
+    --accent: #3b5bdb;
+    --accent-soft: #e7ecfd;
+    --line: #dfe4ec;
+    --card: #ffffff;
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg-a);
+    color: var(--ink);
+    position: relative;
+  }
+
+  body[data-theme="dark"] {
+    --bg-a: #0e1116;
+    --bg-b: #141a24;
+    --ink: #eef1f5;
+    --ink-2: #a3adb9;
+    --ink-3: #6f7a87;
+    --accent: #7c9bff;
+    --accent-soft: #1b2440;
+    --line: #262d38;
+    --card: #171c24;
+  }
+
+  .bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(900px 420px at 88% 10%, var(--accent-soft) 0%, transparent 62%),
+      linear-gradient(160deg, var(--bg-a) 0%, var(--bg-b) 100%);
+  }
+
+  /* faint rungs receding to the right */
+  .rungs-bg { position: absolute; inset: 0; opacity: .5; }
+  .rungs-bg i {
+    position: absolute; right: -40px;
+    height: 2px; background: var(--line); display: block;
+  }
+
+  .wrap {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 72px;
+    gap: 46px;
+  }
+
+  .mark {
+    width: 108px; height: 108px;
+    border-radius: 30px;
+    background: var(--accent);
+    display: grid; place-items: center;
+    flex: none;
+    box-shadow: 0 18px 40px -14px rgba(59, 91, 219, .55);
+  }
+  .mark svg { width: 60px; height: 60px; color: #fff; }
+
+  .copy { min-width: 0; }
+
+  h1 {
+    font-size: 68px;
+    font-weight: 800;
+    letter-spacing: -.035em;
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+
+  .tag {
+    font-size: 23px;
+    font-weight: 500;
+    color: var(--ink-2);
+    letter-spacing: -.012em;
+    line-height: 1.35;
+    margin-bottom: 22px;
+  }
+  .tag b { color: var(--ink); font-weight: 600; }
+
+  .pills { display: flex; gap: 9px; flex-wrap: wrap; }
+  .pill {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-2);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 7px 15px;
+    white-space: nowrap;
+  }
+  .pill.on {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    font-weight: 600;
+  }
+
+  /* the five rungs, as the product's own ladder */
+  .steps {
+    position: absolute;
+    right: 66px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    width: 296px;
+  }
+  .step {
+    display: flex; align-items: center; gap: 11px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    padding: 10px 14px;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--ink-2);
+  }
+  .step .n {
+    width: 22px; height: 22px; flex: none;
+    border-radius: 50%;
+    background: var(--bg-b);
+    border: 1px solid var(--line);
+    color: var(--ink-3);
+    font-size: 11.5px; font-weight: 700;
+    display: grid; place-items: center;
+  }
+  .step.done { color: var(--ink); }
+  .step.done .n {
+    background: var(--accent); border-color: var(--accent); color: #fff;
+  }
+  .step.next {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+    color: var(--ink);
+  }
+</style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="rungs-bg" id="rungsbg"></div>
+
+  <div class="wrap">
+    <div class="mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round">
+        <path d="M7 2v20M17 2v20M7 7h10M7 12h10M7 17h10"/>
+      </svg>
+    </div>
+
+    <div class="copy">
+      <h1>Ladder</h1>
+      <div class="tag">
+        A coding-practice coach that sits <b>beside the problem</b>.<br>
+        Five rungs of hints, so you get unstuck <b>without getting spoiled</b>.
+      </div>
+      <div class="pills">
+        <span class="pill on">Bring your own key</span>
+        <span class="pill">Gemini free tier</span>
+        <span class="pill">10 sites</span>
+        <span class="pill">4 languages</span>
+        <span class="pill">No build step</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step done"><span class="n">1</span>What is this even asking?</div>
+    <div class="step next"><span class="n">2</span>Give me a nudge</div>
+    <div class="step"><span class="n">3</span>Name the approach</div>
+    <div class="step"><span class="n">4</span>Walk me through a plan</div>
+    <div class="step"><span class="n">5</span>Show the full solution</div>
+  </div>
+
+<script>
+  const p = new URLSearchParams(location.search);
+  if (p.get('theme') === 'dark') document.body.dataset.theme = 'dark';
+
+  // Decorative rungs fanning out behind the copy.
+  const bg = document.getElementById('rungsbg');
+  for (let i = 0; i < 13; i++) {
+    const el = document.createElement('i');
+    el.style.top = (14 + i * 30) + 'px';
+    el.style.width = (150 + i * 46) + 'px';
+    el.style.opacity = String(0.15 + (i % 5) * 0.05);
+    bg.appendChild(el);
+  }
+</script>
+</body>
+</html>

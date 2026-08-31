@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="opt.title">Ladder settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-inner">
+    <div class="brand">
+      <div class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M7 2v20M17 2v20M7 7h10M7 12h10M7 17h10"/>
+        </svg>
+      </div>
+      <div>
+        <h1>Ladder</h1>
+        <p data-i18n="opt.tagline"></p>
+      </div>
+    </div>
+    <select id="uiLangTop" class="lang-top" aria-label="Language"></select>
+    <div class="status" id="status-pill"></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ------------------------------------------------ quick start -->
+  <section class="card start" id="quickstart">
+    <h2 id="start-title" data-i18n="opt.start.title"></h2>
+    <ol class="steps">
+      <li>
+        <span class="step-n">1</span>
+        <div>
+          <strong data-i18n="opt.step1.title"></strong>
+          <p data-i18n="opt.step1.body"></p>
+          <a class="btn" href="https://aistudio.google.com/apikey" target="_blank"
+             rel="noopener" data-i18n="opt.step1.cta"></a>
+        </div>
+      </li>
+      <li>
+        <span class="step-n">2</span>
+        <div>
+          <strong data-i18n="opt.step2.title"></strong>
+          <p data-i18n-html="opt.step2.body"></p>
+        </div>
+      </li>
+      <li>
+        <span class="step-n">3</span>
+        <div>
+          <strong data-i18n="opt.step3.title"></strong>
+          <p data-i18n="opt.step3.body"></p>
+          <div class="paste-row">
+            <input type="password" id="smart-key" autocomplete="off" spellcheck="false"
+                   data-i18n-attr="placeholder: opt.paste.placeholder">
+            <button class="btn" id="smart-save" data-i18n="opt.paste.save"></button>
+          </div>
+          <p class="paste-note" id="smart-note" data-i18n="opt.paste.hint"></p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ------------------------------------------------ providers -->
+  <section>
+    <div class="sec-head">
+      <h2 data-i18n="opt.providers"></h2>
+      <p data-i18n="opt.providers.note"></p>
+    </div>
+    <div class="providers" id="providers"></div>
+  </section>
+
+  <!-- ------------------------------------------------ preferences -->
+  <section>
+    <div class="sec-head">
+      <h2 data-i18n="opt.coach"></h2>
+    </div>
+    <div class="card prefs">
+
+      <div class="pref row">
+        <span>
+          <strong data-i18n="opt.uiLang.title"></strong>
+          <em data-i18n="opt.uiLang.body"></em>
+        </span>
+        <select id="uiLang"></select>
+      </div>
+
+      <label class="pref toggle">
+        <input type="checkbox" id="beginnerMode">
+        <span>
+          <strong data-i18n="opt.beginner.title"></strong>
+          <em data-i18n="opt.beginner.body"></em>
+        </span>
+      </label>
+
+      <label class="pref toggle">
+        <input type="checkbox" id="spoilerGuard">
+        <span>
+          <strong data-i18n="opt.spoiler.title"></strong>
+          <em data-i18n="opt.spoiler.body"></em>
+        </span>
+      </label>
+
+      <label class="pref toggle">
+        <input type="checkbox" id="autoOpen">
+        <span>
+          <strong data-i18n="opt.autoOpen.title"></strong>
+          <em data-i18n="opt.autoOpen.body"></em>
+        </span>
+      </label>
+
+      <label class="pref toggle">
+        <input type="checkbox" id="sendCode">
+        <span>
+          <strong data-i18n="opt.sendCode.title"></strong>
+          <em data-i18n="opt.sendCode.body"></em>
+        </span>
+      </label>
+
+      <div class="pref row">
+        <span><strong data-i18n="opt.lang.title"></strong></span>
+        <select id="language"></select>
+      </div>
+
+      <div class="pref row">
+        <span><strong data-i18n="opt.theme.title"></strong></span>
+        <select id="theme">
+          <option value="auto" data-i18n="opt.theme.auto"></option>
+          <option value="light" data-i18n="opt.theme.light"></option>
+          <option value="dark" data-i18n="opt.theme.dark"></option>
+        </select>
+      </div>
+
+      <div class="pref row">
+        <span>
+          <strong data-i18n="opt.style.title"></strong>
+          <em class="inline" data-i18n="opt.style.body"></em>
+        </span>
+        <span class="slider-wrap">
+          <input type="range" id="temperature" min="0" max="10" step="1">
+          <output id="temperature-out">0.4</output>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------ shortcuts -->
+  <section>
+    <div class="sec-head">
+      <h2 data-i18n="opt.keyboard"></h2>
+      <p data-i18n-html="opt.keyboard.note"></p>
+    </div>
+    <div class="card keys">
+      <div><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>L</kbd><span data-i18n="opt.kb.toggle"></span></div>
+      <div><kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>H</kbd><span data-i18n="opt.kb.hint"></span></div>
+      <div><kbd>Enter</kbd><span data-i18n="opt.kb.send"></span></div>
+      <div><kbd>Shift</kbd><kbd>Enter</kbd><span data-i18n="opt.kb.newline"></span></div>
+      <div><kbd>Esc</kbd><span data-i18n="opt.kb.close"></span></div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------ data -->
+  <section>
+    <div class="sec-head">
+      <h2 data-i18n="opt.data"></h2>
+      <p data-i18n="opt.data.note"></p>
+    </div>
+    <div class="card data-row">
+      <button class="btn ghost" id="export" data-i18n="opt.data.export"></button>
+      <button class="btn ghost" id="import" data-i18n="opt.data.import"></button>
+      <button class="btn danger" id="clear" data-i18n="opt.data.clear"></button>
+      <input type="file" id="import-file" accept="application/json" hidden>
+    </div>
+    <p class="data-note" id="data-note"></p>
+  </section>
+
+  <footer class="foot">
+    <p data-i18n="opt.foot"></p>
+  </footer>
+</main>
+
+<script src="../shared/constants.js"></script>
+<script src="../shared/markdown.js"></script>
+<script src="../shared/i18n.js"></script>
+<script src="../shared/locales/en.js"></script>
+<script src="../shared/locales/zh-TW.js"></script>
+<script src="../shared/locales/zh-CN.js"></script>
+<script src="../shared/locales/es.js"></script>
+<script src="../shared/providers.js"></script>
+<script src="options.js"></script>
+</body>
+</html>

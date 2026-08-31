@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ladder</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="head">
+    <div class="mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M7 2v20M17 2v20M7 7h10M7 12h10M7 17h10"/>
+      </svg>
+    </div>
+    <div class="head-t">
+      <strong>Ladder</strong>
+      <span id="provider">no provider yet</span>
+    </div>
+  </div>
+
+  <div id="context" class="context"></div>
+
+  <div class="actions">
+    <button class="btn" id="open" data-i18n="popup.open"></button>
+    <button class="btn ghost" id="hint" data-i18n="popup.hint"></button>
+  </div>
+
+  <div class="stats" id="stats"></div>
+
+  <div id="due-wrap" class="due-wrap hidden">
+    <div class="label" data-i18n="popup.due"></div>
+    <div id="due"></div>
+  </div>
+
+  <div class="foot">
+    <button class="link" id="settings" data-i18n="popup.settings"></button>
+    <span class="kbd">Ctrl+Shift+L</span>
+  </div>
+
+  <script src="../shared/constants.js"></script>
+  <script src="../shared/markdown.js"></script>
+  <script src="../shared/i18n.js"></script>
+  <script src="../shared/locales/en.js"></script>
+  <script src="../shared/locales/zh-TW.js"></script>
+  <script src="../shared/locales/zh-CN.js"></script>
+  <script src="../shared/locales/es.js"></script>
+  <script src="../shared/providers.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

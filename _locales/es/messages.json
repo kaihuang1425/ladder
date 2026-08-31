@@ -1,0 +1,6 @@
+{
+  "extName":        { "message": "Ladder — guía de práctica de programación" },
+  "extDescription": { "message": "Una guía junto a LeetCode, Codeforces, AtCoder y más. Pistas graduales en lugar de spoilers. Usa tu propia clave: el plan gratuito de Gemini sirve." },
+  "cmdToggle":      { "message": "Mostrar u ocultar el panel de Ladder" },
+  "cmdHint":        { "message": "Pedir la siguiente pista" }
+}

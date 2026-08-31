@@ -1,0 +1,45 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check every source file parses
+        run: |
+          for f in $(find src tools -name '*.js'); do
+            node --check "$f" || exit 1
+          done
+
+      - name: Validate manifest and locale files
+        run: |
+          node -e "
+            const fs = require('fs');
+            const m = JSON.parse(fs.readFileSync('manifest.json', 'utf8'));
+            const files = [m.background.service_worker, m.options_page, m.action.default_popup]
+              .concat(Object.values(m.icons))
+              .concat(m.content_scripts.flatMap(cs => cs.js || []));
+            const missing = files.filter(f => !fs.existsSync(f));
+            if (missing.length) { console.error('missing: ' + missing.join(', ')); process.exit(1); }
+            const keys = [...JSON.stringify(m).matchAll(/__MSG_(\w+)__/g)].map(x => x[1]);
+            for (const d of fs.readdirSync('_locales')) {
+              const j = JSON.parse(fs.readFileSync('_locales/' + d + '/messages.json', 'utf8'));
+              const gaps = keys.filter(k => !j[k]);
+              if (gaps.length) { console.error(d + ' missing ' + gaps.join(', ')); process.exit(1); }
+            }
+            console.log('manifest and _locales OK');
+          "
+
+      - name: Self-test
+        run: node tools/selftest.js
