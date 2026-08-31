@@ -146,6 +146,11 @@
     return Math.max(lo, Math.min(hi, n));
   }
 
+  function codeForRequest(settings, explicitCode, draftCode) {
+    if (!settings || settings.sendCode === false) return '';
+    return explicitCode || draftCode || '';
+  }
+
   function relTime(ts) {
     const T = NS.t || function (k) { return k; };
     if (!ts) return T('time.never');
@@ -174,6 +179,7 @@
     nextReview,
     problemId,
     clamp,
+    codeForRequest,
     relTime
   });
 })(typeof globalThis !== 'undefined' ? globalThis : self);

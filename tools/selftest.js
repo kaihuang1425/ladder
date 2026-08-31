@@ -401,6 +401,12 @@ check('storage: spaced repetition intervals grow', function () {
   eq(Math.round((L.nextReview(99) - now) / 864e5), 35, 'clamps at the last step');
 });
 
+check('privacy: disabling code sending overrides every code source', function () {
+  eq(L.codeForRequest({ sendCode: false }, 'explicit code', 'saved draft'), '');
+  eq(L.codeForRequest({ sendCode: true }, 'explicit code', 'saved draft'), 'explicit code');
+  eq(L.codeForRequest({ sendCode: true }, '', 'saved draft'), 'saved draft');
+});
+
 
 /* ------------------------------------------------------------------ i18n */
 

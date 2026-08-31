@@ -1,0 +1,62 @@
+name: Chrome Web Store package
+
+on:
+  push:
+    branches:
+      - work/chrome-web-store
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run self-tests
+        run: node tools/selftest.js
+
+      - name: Validate manifest metadata
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const manifest = JSON.parse(fs.readFileSync('manifest.json', 'utf8'));
+          if (manifest.manifest_version !== 3) throw new Error('Chrome Web Store requires Manifest V3');
+          const locales = ['en', 'es', 'zh_CN', 'zh_TW'];
+          for (const locale of locales) {
+            const messages = JSON.parse(fs.readFileSync(`_locales/${locale}/messages.json`, 'utf8'));
+            const name = messages.extName.message;
+            const description = messages.extDescription.message;
+            if (name.length > 75) throw new Error(`${locale} extension name is ${name.length} chars; max is 75`);
+            if (description.length > 132) throw new Error(`${locale} description is ${description.length} chars; max is 132`);
+          }
+          console.log('Manifest/store string limits OK');
+          NODE
+
+      - name: Generate Web Store images
+        run: node tools/store-assets.js
+
+      - name: Build clean Web Store ZIP
+        run: |
+          mkdir -p dist
+          zip -r "dist/ladder-0.2.0-chrome-web-store.zip" manifest.json _locales icons src
+          unzip -l "dist/ladder-0.2.0-chrome-web-store.zip"
+
+      - name: Upload Web Store package and listing assets
+        uses: actions/upload-artifact@v4
+        with:
+          name: ladder-chrome-web-store-0.2.0
+          path: |
+            dist/ladder-0.2.0-chrome-web-store.zip
+            docs/store/*.png
+            PRIVACY.md
+            STORE_LISTING.md
+          if-no-files-found: error

@@ -5,6 +5,7 @@
   "description": "__MSG_extDescription__",
   "default_locale": "en",
   "minimum_chrome_version": "116",
+  "homepage_url": "https://github.com/kaihuang1425/ladder",
 
   "action": {
     "default_title": "Ladder",
@@ -45,7 +46,7 @@
     "http://127.0.0.1/*"
   ],
 
-  "optional_host_permissions": ["*://*/*"],
+  "optional_host_permissions": ["https://*/*"],
 
   "content_scripts": [
     {
