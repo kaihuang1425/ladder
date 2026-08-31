@@ -9,7 +9,7 @@
 
 **A Chrome extension that coaches you through LeetCode, Codeforces and AtCoder — instead of handing you the answer.**
 
-[![tests](https://github.com/erichuang1425/ladder/actions/workflows/test.yml/badge.svg)](https://github.com/erichuang1425/ladder/actions/workflows/test.yml)
+[![tests](https://github.com/kaihuang1425/ladder/actions/workflows/test.yml/badge.svg)](https://github.com/kaihuang1425/ladder/actions/workflows/test.yml)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-3b5bdb)](manifest.json)
 [![no build step](https://img.shields.io/badge/build_step-none-2f9e44)](#development)
 [![languages](https://img.shields.io/badge/languages-EN%20·%20繁中%20·%20简中%20·%20ES-3b5bdb)](#languages)
@@ -132,7 +132,7 @@ back to finding the problem-shaped text on the page.
 No build step, no dependencies, no server. It runs from source as it is.
 
 ```bash
-git clone https://github.com/erichuang1425/ladder.git
+git clone https://github.com/kaihuang1425/ladder.git
 ```
 
 1. Open `chrome://extensions`
